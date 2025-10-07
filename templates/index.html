@@ -5,52 +5,120 @@
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">Manos Solidarias</h1>
       <p class="col-md-8 fs-4">Tu donación puede cambiar vidas. Únete a nuestra causa y ayúdanos a ayudar a quienes más lo necesitan.</p>
-      <a href="{{ url_for('add_product') }}" class="btn btn-primary btn-lg">¡Dona ahora!</a>
+      <a href="{{ url_for('add_donation') }}" class="btn btn-primary btn-lg">¡Dona ahora!</a>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <img src="https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Donación de Ropa">
-        <div class="card-body">
-          <h5 class="card-title">Donación de Ropa</h5>
-          <p class="card-text">Tu ropa en buen estado puede abrigar a alguien que lo necesita. Aceptamos todo tipo de prendas.</p>
-          <a href="{{ url_for('add_product') }}" class="btn btn-secondary">Donar ropa</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img src="https://images.pexels.com/photos/697243/pexels-photo-697243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Donación de Comida">
-        <div class="card-body">
-          <h5 class="card-title">Donación de Comida</h5>
-          <p class="card-text">Los alimentos no perecederos son fundamentales para garantizar la seguridad alimentaria de muchas familias.</p>
-          <a href="{{ url_for('add_product') }}" class="btn btn-secondary">Donar comida</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img src="https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Donación de Dinero">
-        <div class="card-body">
-          <h5 class="card-title">Donación de Dinero</h5>
-          <p class="card-text">Tu aporte económico nos permite cubrir gastos operativos y llegar a más personas.</p>
-          <a href="{{ url_for('add_product') }}" class="btn btn-secondary">Donar dinero</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-4">
-      <div class="col-md-12">
-          <div class="card">
-              <div class="card-body">
-                  <h5 class="card-title">Voluntariado</h5>
-                  <p class="card-text">El tiempo es uno de los regalos más valiosos que puedes dar. ¡Súmate a nuestro equipo de voluntarios!</p>
-                  <a href="#" class="btn btn-info">Más información</a>
-              </div>
+  <div class="container">
+    <h2 class="text-center mb-4">Categorías de Donación</h2>
+    <div class="row text-center">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src="https://tse2.mm.bing.net/th/id/OIP._GDtXSONS_ideIhJ2nxQswHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" alt="Donación de ropa">
+          <div class="card-body">
+            <h5 class="card-title">Ropa</h5>
+            <p class="card-text">Puedes donar ropa en buen estado para niños y adultos. Toda ayuda es bienvenida.</p>
           </div>
+        </div>
       </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.uAi2XgJNbAnE6MpT7dPJpwHaFm?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" alt="Donación de alimentos">
+          <div class="card-body">
+            <h5 class="card-title">Alimentos</h5>
+            <p class="card-text">Aceptamos alimentos no perecederos como arroz, frijoles, enlatados, etc.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.i2SYQMAY5OwPLQ6_wYpNvQHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" alt="Donación de dinero">
+          <div class="card-body">
+            <h5 class="card-title">Dinero</h5>
+            <p class="card-text">Tu contribución económica nos permite cubrir gastos operativos y comprar artículos de primera necesidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Ejemplos de Donaciones de Alimentos</h2>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.yWLmTOf7zjPnBPPcMuMvRAHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" alt="Atún">
+                <div class="card-body">
+                    <p class="card-text text-center">Atún</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://th.bing.com/th/id/R.159ac74ba2e0bc204e76e020a5d09ef7?rik=KEoiM4nzzKComg&riu=http%3a%2f%2fwww.eluniversal.com.mx%2fsites%2fdefault%2ffiles%2fstyles%2ff03-651x400%2fpublic%2f2017%2f03%2f16%2farroz_el_universal_menu_istock.jpg%3fitok%3db5Z-Ovqw&ehk=DaAHlJJ3nwmmgnz3bM78pkTtWYKYUEgIlpIFl%2btF0AU%3d&risl=&pid=ImgRaw&r=0" class="card-img-top" alt="Arroz">
+                <div class="card-body">
+                    <p class="card-text text-center">Arroz</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.YhrEuaP5ONis-TcPwQ_DbwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" alt="Frijoles enlatados">
+                <div class="card-body">
+                    <p class="card-text text-center">Frijoles enlatados</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://img.freepik.com/fotos-premium/maiz-dulce-enlatado-lata-lata-maiz-aislado-maiz-desmenuzado-lata_118339-1919.jpg?w=2000" class="card-img-top" alt="Maíz enlatado">
+                <div class="card-body">
+                    <p class="card-text text-center">Maíz enlatado</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.4KRPWWjP5dNvIp-KirojDgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" alt="Sopa enlatada">
+                <div class="card-body">
+                    <p class="card-text text-center">Sopa enlatada</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://a1.soysuper.com/4e35233ea785f161ea05e7ec8e2a00cb.1500.0.0.0.wmark.b86042c5.jpg" class="card-img-top" alt="Pasta">
+                <div class="card-body">
+                    <p class="card-text text-center">Pasta</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://a1.soysuper.com/e2bad3d1f30412a4dcbbdfbec1b4b159.1500.0.0.0.wmark.fcdda59f.jpg" class="card-img-top" alt="Lentejas">
+                <div class="card-body">
+                    <p class="card-text text-center">Lentejas</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://cdn2.actitudfem.com/media/files/aceites-cocina-profeco-redes.jpg" class="card-img-top" alt="Aceite">
+                <div class="card-body">
+                    <p class="card-text text-center">Aceite</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="https://a0.soysuper.com/462aaf834747edf7255e7ad993d7820f.1500.0.0.0.wmark.cb43e13b.jpg" class="card-img-top" alt="Azúcar">
+                <div class="card-body">
+                    <p class="card-text text-center">Azúcar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

@@ -11,14 +11,17 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{{ url_for('index') }}">Manos Solidarias</a>
+          <a class="navbar-brand" href="{{ url_for('index') }}">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.flv-xgLBmAA-iOY-bkqQRwAAAA?cb=12&w=360&h=360&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Manos Solidarias Logo" class="logo">
+            Manos Solidarias
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
               </li>
@@ -26,14 +29,38 @@
                 <a class="nav-link" href="{{ url_for('about') }}">Acerca</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link btn btn-primary text-white" href="{{ url_for('add_product') }}">Donar</a>
+                <a class="nav-link" href="{{ url_for('donations') }}">Donaciones</a>
               </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              {% if 'user_id' in session %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Cerrar Sesión</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login') }}">Inicio de Sesión</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('register') }}">Registro</a>
+              </li>
+              {% endif %}
+
             </ul>
           </div>
         </div>
       </nav>
     </header>
     <main class="container mt-4">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
       {% block content %}{% endblock %}
     </main>
     <footer class="text-center mt-4">
