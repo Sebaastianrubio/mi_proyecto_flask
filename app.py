@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class User(db.Model):
+    __tablename__ = 'usuarios'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
@@ -24,23 +25,33 @@ class User(db.Model):
     donations = db.relationship('Donation', backref='donor', lazy=True)
 
 class Category(db.Model):
+    __tablename__ = 'categorias'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     donations = db.relationship('Donation', backref='category', lazy=True)
 
 class Status(db.Model):
+    __tablename__ = 'estados'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     donations = db.relationship('Donation', backref='status', lazy=True)
 
 class Donation(db.Model):
+    __tablename__ = 'donaciones'
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(120), nullable=False)
     quantity = db.Column(db.Integer, default=1)
     value = db.Column(db.Float, default=0.0)
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    status_id = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey('categorias.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
+    status_id = db.Column(db.Integer, db.ForeignKey('estados.id'), nullable=False)
+
+class Product(db.Model):
+    __tablename__ = 'productos'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Float, nullable=False)
 
     def to_dict(self):
         return {'id': self.id, 'description': self.description, 'quantity': self.quantity, 'value': self.value, 'status': self.status.name}
@@ -81,14 +92,20 @@ def add_donation():
 @app.route('/delete/<int:donation_id>', methods=['POST'])
 def delete_donation(donation_id):
     donation = Donation.query.get_or_404(donation_id)
+    if 'user_id' not in session or donation.user_id != session['user_id']:
+        flash('No tienes permiso para eliminar esta donación.', 'danger')
+        return redirect(url_for('donations'))
     db.session.delete(donation)
     db.session.commit()
     flash('Donación eliminada con éxito', 'success')
-    return redirect(url_for('index'))
+    return redirect(url_for('donations'))
 
 @app.route('/update/<int:donation_id>', methods=['GET', 'POST'])
 def update_donation(donation_id):
     donation = Donation.query.get_or_404(donation_id)
+    if 'user_id' not in session or donation.user_id != session['user_id']:
+        flash('No tienes permiso para editar esta donación.', 'danger')
+        return redirect(url_for('donations'))
     if request.method == 'POST':
         donation.description = request.form['description']
         donation.quantity = int(request.form['quantity'])
@@ -96,7 +113,7 @@ def update_donation(donation_id):
         donation.category_id = int(request.form['category_id'])
         db.session.commit()
         flash('Donación actualizada con éxito', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('donations'))
     categories = Category.query.all()
     return render_template('formulario.html', donation=donation, categories=categories)
 
