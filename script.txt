@@ -1,0 +1,36 @@
+// script de la tablas creadas
+CATEGORIAS
+CREATE TABLE `categorias` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+  )
+
+DONACIONES  
+CREATE TABLE `donaciones` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(120) NOT NULL,
+  `quantity` int DEFAULT NULL,
+  `value` float DEFAULT NULL,
+  `category_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `status_id` int NOT NULL
+)
+
+  ESTADOS
+CREATE TABLE `estados` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+)
+  
+  PRODUCTOS
+  CREATE TABLE `productos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `quantity` int NOT NULL,
+  `price` float NOT NULL,
+  PRIMARY KEY (`id`)
+)
