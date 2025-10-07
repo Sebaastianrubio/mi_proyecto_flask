@@ -18,9 +18,9 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 # Crear instancia de Flask
 app = Flask(__name__)
 
-# Configuración de la base de datos SQLite
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'database', 'inventario.db')
-# URI completa de la base de datos SQLite
+# Configuración de la base de datos MySQL
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:000000@localhost/dbsolidarias'
+# URI completa de la base de datos MySQL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Evita mensajes de advertencia sobre cambios en objetos de SQLAlchemy
 

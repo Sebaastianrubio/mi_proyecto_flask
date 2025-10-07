@@ -1,5 +1,21 @@
 {
     "python.analysis.extraPaths": [
         "./database"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "dbsolidarias",
+            "name": "dbsolidarias",
+            "username": "root"
+        }
     ]
 }
