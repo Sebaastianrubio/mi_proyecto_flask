@@ -1,10 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>{{ product and "Editar" or "Añadir" }} producto</h2>
+  <h2>{{ product and "Editar" or "Añadir" }} Donación</h2>
   <form method="post">
-    <label>Nombre: <input type="text" name="name" value="{{ product.name if product else '' }}" required></label><br>
-    <label>Cantidad: <input type="number" name="quantity" value="{{ product.quantity if product else 0 }}" min="0"></label><br>
-    <label>Precio: <input type="number" step="0.01" name="price" value="{{ product.price if product else 0.0 }}"></label><br>
-    <button type="submit">Guardar</button>
+    <div class="mb-3">
+      <label for="name" class="form-label">Tipo de donación</label>
+      <input type="text" class="form-control" id="name" name="name" value="{{ product.name if product else '' }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Cantidad</label>
+      <input type="number" class="form-control" id="quantity" name="name" value="{{ product.quantity if product else 1 }}" min="1">
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Valor estimado (opcional)</label>
+      <input type="number" step="0.01" class="form-control" id="price" name="price" value="{{ product.price if product else 0.0 }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
 {% endblock %}

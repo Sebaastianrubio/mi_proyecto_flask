@@ -1,6 +1,31 @@
 {% extends "base.html" %}
-{% block title %}Acerca de{% endblock %}
+{% block title %}Acerca de - Manos Solidarias{% endblock %}
 {% block content %}
-<h2>Acerca de este proyecto</h2>
-<p>Este es un sistema de gestión de inventarios desarrollado con Flask, SQLite y POO.</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="text-center mb-4">Acerca de Manos Solidarias</h2>
+            <p class="lead text-center">
+                Somos una organización sin fines de lucro dedicada a recolectar y distribuir donaciones para ayudar a quienes más lo necesitan. 
+                Nuestra misión es ser un puente entre quienes desean ayudar y quienes necesitan ayuda.
+            </p>
+            <hr class="my-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Nuestra Visión</h4>
+                    <p>Un mundo donde la solidaridad y la empatía son los pilares de la sociedad, y nadie se siente desamparado.</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Nuestros Valores</h4>
+                    <ul>
+                        <li>Solidaridad</li>
+                        <li>Transparencia</li>
+                        <li>Compromiso</li>
+                        <li>Empatía</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

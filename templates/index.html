@@ -1,26 +1,56 @@
 {% extends "base.html" %}
-{% block title %}Inicio - Inventario{% endblock %}
+{% block title %}Inicio - Manos Solidarias{% endblock %}
 {% block content %}
-  <h2>Productos</h2>
-  {% if products %}
-    <table>
-      <tr><th>ID</th><th>Nombre</th><th>Cantidad</th><th>Precio</th><th>Acciones</th></tr>
-      {% for p in products %}
-      <tr>
-        <td>{{ p.id }}</td>
-        <td>{{ p.name }}</td>
-        <td>{{ p.quantity }}</td>
-        <td>{{ "%.2f"|format(p.price) }}</td>
-        <td>
-          <form action="{{ url_for('delete_product', product_id=p.id) }}" method="post" style="display:inline;">
-            <button type="submit">Eliminar</button>
-          </form>
-          <a href="{{ url_for('update_product', product_id=p.id) }}">Editar</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <p>No hay productos.</p>
-  {% endif %}
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Manos Solidarias</h1>
+      <p class="col-md-8 fs-4">Tu donación puede cambiar vidas. Únete a nuestra causa y ayúdanos a ayudar a quienes más lo necesitan.</p>
+      <a href="{{ url_for('add_product') }}" class="btn btn-primary btn-lg">¡Dona ahora!</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Donación de Ropa">
+        <div class="card-body">
+          <h5 class="card-title">Donación de Ropa</h5>
+          <p class="card-text">Tu ropa en buen estado puede abrigar a alguien que lo necesita. Aceptamos todo tipo de prendas.</p>
+          <a href="{{ url_for('add_product') }}" class="btn btn-secondary">Donar ropa</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://images.pexels.com/photos/697243/pexels-photo-697243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Donación de Comida">
+        <div class="card-body">
+          <h5 class="card-title">Donación de Comida</h5>
+          <p class="card-text">Los alimentos no perecederos son fundamentales para garantizar la seguridad alimentaria de muchas familias.</p>
+          <a href="{{ url_for('add_product') }}" class="btn btn-secondary">Donar comida</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Donación de Dinero">
+        <div class="card-body">
+          <h5 class="card-title">Donación de Dinero</h5>
+          <p class="card-text">Tu aporte económico nos permite cubrir gastos operativos y llegar a más personas.</p>
+          <a href="{{ url_for('add_product') }}" class="btn btn-secondary">Donar dinero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title">Voluntariado</h5>
+                  <p class="card-text">El tiempo es uno de los regalos más valiosos que puedes dar. ¡Súmate a nuestro equipo de voluntarios!</p>
+                  <a href="#" class="btn btn-info">Más información</a>
+              </div>
+          </div>
+      </div>
+  </div>
 {% endblock %}
